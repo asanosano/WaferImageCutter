@@ -1,0 +1,111 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <SolidColorBrush x:Key="TestRed" Color="#FFFF0000"/>
+    <SolidColorBrush x:Key="TestBlue" Color="#FF0000FF"/>
+
+
+    <SolidColorBrush x:Key="Dk.Static.Foreground" Color="#FFFFFFFF"/>
+    <SolidColorBrush x:Key="Dk.Static.Background" Color="#FF666666"/>
+    <SolidColorBrush x:Key="Dk.Static.Border" Color="#FF666666"/>
+    
+    <SolidColorBrush x:Key="Dk.MouseOver.Background" Color="#FF666666"/>
+    <SolidColorBrush x:Key="Dk.MouseOver.Border" Color="#FFAAAAAA"/>
+
+    <SolidColorBrush x:Key="Dk.Disabled.Background" Color="#FFF4F4F4"/>
+    <SolidColorBrush x:Key="Dk.Disabled.Border" Color="#FFADB2B5"/>
+    <SolidColorBrush x:Key="Dk.Disabled.Foreground" Color="#FF838383"/>
+
+    <SolidColorBrush x:Key="Dk.Pressed.Background" Color="#FFAAAAAA"/>
+    <SolidColorBrush x:Key="Dk.Pressed.Border" Color="#FFAAAAAA"/>
+
+    <SolidColorBrush x:Key="Dk.Focused.Foreground" Color="#FF000000"/>
+    <SolidColorBrush x:Key="Dk.Focused.Background" Color="#FFAAAAAA"/>
+    <SolidColorBrush x:Key="Dk.Focused.Border" Color="#FFAAAAAA"/>
+
+
+    <Style x:Key="DkButtonStyle" TargetType="{x:Type Button}">
+        <Setter Property="Background" Value="{StaticResource Dk.Static.Background}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource Dk.Static.Border}"/>
+        <Setter Property="Foreground" Value="{StaticResource Dk.Static.Foreground}"/>
+        <Setter Property="BorderThickness" Value="2"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Padding" Value="1"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border 
+                        x:Name="border" 
+                        Background="{TemplateBinding Background}" 
+                        BorderBrush="{TemplateBinding BorderBrush}" 
+                        BorderThickness="{TemplateBinding BorderThickness}" 
+                        SnapsToDevicePixels="true"
+                        CornerRadius="5">
+                        <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsDefaulted" Value="true">
+                            <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Setter Property="Background" TargetName="border" Value="{StaticResource Dk.MouseOver.Background}"/>
+                            <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Dk.MouseOver.Border}"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="true">
+                            <Setter Property="Background" TargetName="border" Value="{StaticResource Dk.Pressed.Background}"/>
+                            <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Dk.Pressed.Border}"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter Property="Background" TargetName="border" Value="{StaticResource Dk.Disabled.Background}"/>
+                            <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Dk.Disabled.Border}"/>
+                            <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Dk.Disabled.Foreground}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+    
+  
+    <Style  x:Key="DkTextBoxStyle"  TargetType="{x:Type TextBoxBase}">
+        <Setter Property="SnapsToDevicePixels" Value="True"/>
+        <Setter Property="OverridesDefaultStyle" Value="True"/>
+        <Setter Property="KeyboardNavigation.TabNavigation" Value="None"/>
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        <Setter Property="MinWidth" Value="20"/>
+        <Setter Property="MinHeight" Value="20"/>
+        <Setter Property="AllowDrop" Value="true"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type TextBoxBase}">
+                    <Border 
+                        Name="Border"
+                        CornerRadius="5" 
+                        Padding="2"
+                        Background="{StaticResource Dk.Focused.Background}"
+                       BorderBrush="{TemplateBinding BorderBrush}" 
+                          BorderThickness="2" >
+                        <ScrollViewer Margin="0" x:Name="PART_ContentHost"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="true">
+                             <Setter Property="BorderBrush" TargetName="Border" Value="{StaticResource Dk.MouseOver.Border}"/>
+                        </Trigger>
+                        <Trigger Property="IsFocused" Value="False">
+                            <Setter TargetName="Border" Property="Background" Value="{StaticResource Dk.Static.Background}"/>
+                            <Setter TargetName="Border" Property="BorderBrush" Value="{StaticResource Dk.Static.Background}"/>
+                            <Setter Property="Foreground" Value="{StaticResource  Dk.Static.Foreground}"/>
+                        </Trigger>
+                        <Trigger Property="IsFocused" Value="true">
+                            <Setter Property="Foreground" Value="{StaticResource Dk.Focused.Foreground}"/>
+                            <Setter Property="Background" Value="{StaticResource Dk.Focused.Background}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

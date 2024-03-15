@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net7.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+    <UseWindowsForms>true</UseWindowsForms>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="ClosedXML" Version="0.97.0" />
+    <PackageReference Include="MathNet.Numerics" Version="5.0.0" />
+    <PackageReference Include="NetMQ" Version="4.0.1.10" />
+    <PackageReference Include="OpenCvSharp4.Windows" Version="4.6.0.20220608" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\LevCommon\LevCommon.csproj" />
+  </ItemGroup>
+
+</Project>

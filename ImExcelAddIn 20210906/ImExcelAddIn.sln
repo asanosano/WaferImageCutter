@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31112.23
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImExcelAddIn", "ImExcelAddIn\ImExcelAddIn.csproj", "{9FD808B4-E56B-4562-881D-67260BAC9F5C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9FD808B4-E56B-4562-881D-67260BAC9F5C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9FD808B4-E56B-4562-881D-67260BAC9F5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9FD808B4-E56B-4562-881D-67260BAC9F5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9FD808B4-E56B-4562-881D-67260BAC9F5C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C1210844-8B7F-468B-B69E-7805AB0F99A4}
+	EndGlobalSection
+EndGlobal

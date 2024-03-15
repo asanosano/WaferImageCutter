@@ -1,0 +1,58 @@
+﻿<Window x:Name="MainWindow1" x:Class="Wafer.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Wafer"
+        mc:Ignorable="d"
+        Title="ウエハ連結・検査アプリ_20240315" Height="450" Width="800" Closing="MainWindow1_Closing" Loaded="MainWindow1_Loaded">
+    <TabControl>
+
+        <TabItem Header="連結・検査">
+            <Grid Background="#FFE5E5E5">
+                <TextBox x:Name="TextBoxTargetDir" HorizontalAlignment="Left" Margin="52,36,0,0" TextWrapping="Wrap" Text="I:\DevWork\テスト用元画像\20231025093824_P6604-07-2_" VerticalAlignment="Top" Width="374" Height="54" Grid.ColumnSpan="2"/>
+                <Label Content="対象ディレクトリ"  HorizontalAlignment="Left" Margin="52,10,0,0" VerticalAlignment="Top" Height="26" Width="85"/>
+                <Button x:Name="ButtonSimpleProcess" Content="連結実行" HorizontalAlignment="Left" Margin="52,111,0,0" VerticalAlignment="Top" Height="41" Width="63" Click="ButtonSimpleProcess_Click" IsEnabled="False"/>
+                <Button x:Name="ButtonAllProcess" Content="連結and検査and結果表示" HorizontalAlignment="Left" Margin="52,162,0,0" VerticalAlignment="Top" Height="41" Width="168" Click="ButtonAllProcess_Click" Grid.ColumnSpan="2"/>
+                <RadioButton x:Name="RadioButtonMovedDir" Content="元画像フォルダ" HorizontalAlignment="Left" Margin="129,245,0,0" VerticalAlignment="Top" GroupName="targetDirState" IsChecked="True" Grid.ColumnSpan="2" Height="15" Width="91"/>
+                <RadioButton x:Name="RadioButtonMovedAllDir" Content="元画像フォルダ（まとめて）" HorizontalAlignment="Left" Margin="129,265,0,0" VerticalAlignment="Top" GroupName="targetDirState" Grid.ColumnSpan="2" Height="15" Width="151"/>
+                <Button x:Name="ButtonCheckDlServer" Content="DLサーバー接続チェック" HorizontalAlignment="Left" Margin="344,152,0,0" VerticalAlignment="Top" Height="30" Width="127" Click="ButtonCheckDlServer_Click" Grid.Column="1" IsEnabled="False"/>
+                <Label Content="※補正結果が↓と異なるので注意　修正中" HorizontalAlignment="Left" Margin="117,114,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Height="26" Width="223"/>
+                <CheckBox x:Name="CheckBoxSkipInspect" Content="検査スキップ（検査済みウエハに対して後処理のみ実施）" HorizontalAlignment="Left" Margin="129,299,0,0" VerticalAlignment="Top" Height="15" Width="321"/>
+                <Button x:Name="ButtonConstProcess" Content="連結（固定位置）" HorizontalAlignment="Left" Margin="52,329,0,0" VerticalAlignment="Top" Height="25" Width="111" Click="ButtonConstProcess_Click"/>
+
+            </Grid>
+        </TabItem>
+        <TabItem Header="結果比較">
+            <Grid Background="#FFE5E5E5">
+                <TextBox x:Name="TextBoxCompareDir1" HorizontalAlignment="Left" Margin="52,53,0,0" TextWrapping="Wrap" Text="I:\Develop\データセット\ウエハ\20230630101903_6RR1000001_" VerticalAlignment="Top" Width="374" Height="54"/>
+                <TextBox x:Name="TextBoxCompareDir2" HorizontalAlignment="Left" Margin="52,153,0,0" TextWrapping="Wrap" Text="I:\Develop\データセット\ウエハ\20230630101903_6RR1000001_" VerticalAlignment="Top" Width="374" Height="54"/>
+                <Label Content="対象ディレクトリ1"  HorizontalAlignment="Left" Margin="52,27,0,0" VerticalAlignment="Top"/>
+                <Button x:Name="ButtonCompare" Content="差分比較" HorizontalAlignment="Left" Margin="94,222,0,0" VerticalAlignment="Top" Click="ButtonCompare_Click" IsEnabled="False"/>
+                <Button x:Name="ButtonXlsx" Content="スクリーニング結果を変換" HorizontalAlignment="Left" Margin="302,222,0,0" VerticalAlignment="Top" Click="ButtonXlsx_Click" IsEnabled="False"/>
+                <Label Content="対象ディレクトリ2"  HorizontalAlignment="Left" Margin="49,126,0,0" VerticalAlignment="Top"/>
+                <Label Content="対象ディレクトリ1と2(Chip~~)を比較します。&#xa;結果は対象1の上のディレクトリに出力"  HorizontalAlignment="Left" Margin="52,243,0,0" VerticalAlignment="Top"/>
+                <Label Content="対象ディレクトリ1のスクリーニング結果を比較用に変換して対象2に出力します。"  HorizontalAlignment="Left" Margin="281,247,0,0" VerticalAlignment="Top"/>
+                <Button x:Name="ButtonConvertAndCompare" Content="変換＆比較" HorizontalAlignment="Left" Margin="91,317,0,0" VerticalAlignment="Top" Click="ButtonConvertAndCompare_Click" IsEnabled="False"/>
+                <Label Content="対象ディレクトリ1にウエハ結果(Chip~~)、&#xA;2にチップ結果を指定&#xA;結果は対象1の上のディレクトリに出力"  HorizontalAlignment="Left" Margin="49,337,0,0" VerticalAlignment="Top"/>
+                <Button x:Name="ButtonWaferCompare" Content="ウエハ比較" HorizontalAlignment="Left" Margin="320,317,0,0" VerticalAlignment="Top" Click="ButtonWaferCompare_Click"/>
+                <Label Content="対象ディレクトリ1,2にウエハ結果(全体)を指定&#xA;結果は対象1のディレクトリ内に出力"  HorizontalAlignment="Left" Margin="320,337,0,0" VerticalAlignment="Top"/>
+            </Grid>
+        </TabItem>
+        <TabItem Header="TabItem">
+            <Grid>
+                <Button x:Name="ButtonStitch" Content="Stitch" HorizontalAlignment="Left" Margin="84,305,0,0" VerticalAlignment="Top" Height="27" Width="64" Click="ButtonStitch_Click"/>
+                <Button x:Name="ButtonCorrect" Content="Correct" HorizontalAlignment="Left" Margin="84,273,0,0" VerticalAlignment="Top" Height="27" Width="64" Click="ButtonCorrect_Click"/>
+                <Button x:Name="ButtonFukugen" Content="Fukugen" HorizontalAlignment="Left" Margin="245,305,0,0" VerticalAlignment="Top" Height="27" Width="64" Click="ButtonFukugen_Click"/>
+                <Button x:Name="ButtonCutAll" Content="CutAll" HorizontalAlignment="Left" Margin="163,273,0,0" VerticalAlignment="Top" Height="27" Width="64" Click="ButtonCutAll_Click"/>
+                <Button x:Name="ButtonKatamuki" Content="Katamuki" HorizontalAlignment="Left" Margin="163,305,0,0" VerticalAlignment="Top" Height="27" Width="64" Click="ButtonKatamuki_Click"/>
+                <Button x:Name="ButtonCorrect_MakeProfile" Content="Correct__MakeProfile" HorizontalAlignment="Left" Margin="84,43,0,0" VerticalAlignment="Top" Height="27" Width="128" Click="ButtonCorrect_MakeProfile_Click"/>
+                <Button x:Name="ButtonTest" Content="Test" HorizontalAlignment="Left" Margin="84,158,0,0" VerticalAlignment="Top" Height="27" Width="64" Click="ButtonTest_Click"/>
+                <Button x:Name="ButtonGan" Content="GAN" HorizontalAlignment="Left" Margin="245,273,0,0" VerticalAlignment="Top" Height="27" Width="64" Click="ButtonGan_Click"/>
+                <Button x:Name="ButtonParamModify" Content="ParamModify" HorizontalAlignment="Left" Margin="84,104,0,0" VerticalAlignment="Top" Height="27" Width="106" Click="ButtonParamModify_Click"/>
+
+            </Grid>
+        </TabItem>
+    </TabControl>
+
+</Window>
